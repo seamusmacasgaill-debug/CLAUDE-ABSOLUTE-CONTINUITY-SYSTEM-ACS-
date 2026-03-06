@@ -192,7 +192,6 @@ INIT_SCRIPT="$ACS_SCRIPTS_DIR/init_acs.sh"
 if [[ -f "$INIT_SCRIPT" ]]; then
     FORCE_FLAG=""
     [[ "$FORCE" == true ]] && FORCE_FLAG="--force"
-    DRY_FLAG=""
     # DRY_FLAG removed — dry-run passed directly to acs_ingest.py
 
     if [[ "$DRY_RUN" == false ]]; then
