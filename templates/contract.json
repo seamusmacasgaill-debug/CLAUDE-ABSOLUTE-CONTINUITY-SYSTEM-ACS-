@@ -1,0 +1,16 @@
+{
+  "project": "PROJECT_NAME",
+  "contract_doc": "path/to/CONTRACT.md",
+  "pipeline_files": [
+    "PATTERN_1 — e.g. component-assembler.ts",
+    "PATTERN_2 — e.g. style-swap/route.ts"
+  ],
+  "rules": [
+    "RULE_1 — the hard rule that must be in working memory when touching these files",
+    "RULE_2",
+    "RULE_3"
+  ],
+  "quality_gate": "6-star",
+  "smoke_test": "path/to/SMOKE-TEST.md",
+  "session_gate": "path/to/SESSION-GATE.md"
+}
