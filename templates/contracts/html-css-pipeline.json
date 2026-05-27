@@ -1,0 +1,19 @@
+{
+  "project": "YOUR_PROJECT_NAME",
+  "contract_doc": "docs/PIPELINE-CONTRACT.md",
+  "pipeline_files": [
+    "wrapInDocument",
+    "style-swap",
+    "update-colours",
+    "component-assembler"
+  ],
+  "rules": [
+    "Any post-processor that replaces CSS vars globally MUST re-inject contrast-safe values into white-background sections afterward — global replacement corrupts contrast-fix overrides silently",
+    "Generator change (wrapInDocument equivalent) → same-class sweep: does every downstream post-processor still receive what it expects? They have no import — the contract is implicit",
+    "Test ALL palette/theme variants after any pipeline change, not just the default — dark palettes expose contrast bugs that light palettes hide",
+    "After a style change: accept → save → navigate away → return and confirm the saved version persisted (React state and iframe DOM diverge on remount)",
+    "A fix in one post-processor implies checking the parallel post-processor for the same gap — they share code patterns but are edited independently"
+  ],
+  "quality_gate": "6-star",
+  "_comment": "Starter for HTML/CSS generation pipelines with a generator stage and one or more post-processors. Rules distilled from the class of bugs where Pass 1 overwrites what Pass N restores."
+}

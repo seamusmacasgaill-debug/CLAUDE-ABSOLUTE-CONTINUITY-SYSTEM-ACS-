@@ -1,0 +1,19 @@
+{
+  "project": "YOUR_PROJECT_NAME",
+  "pipeline_files": [
+    "src/lib/auth",
+    "src/lib/mailer",
+    "src/app/api/auth",
+    "src/app/auth",
+    "middleware.ts"
+  ],
+  "rules": [
+    "Magic link / token change → test the full flow in a real browser: send → arrive in inbox → click → land on correct page. Console log is not a substitute for inbox delivery",
+    "Auth callback change → test with a completely fresh browser session (incognito, no existing cookies) — most auth bugs only appear on first login, not on sessions that are already established",
+    "Email template change → send to a real inbox before deploying; check spam folder, plain-text fallback, and subject line rendering on mobile",
+    "Token expiry change → explicitly test the expired case: a token that is past expiry must be rejected with a clear user message, not a silent failure or a crash",
+    "Middleware auth guard change → test three paths: (1) no session → correct redirect, (2) valid session → correct pass-through, (3) expired session → correct re-auth prompt"
+  ],
+  "quality_gate": "6-star",
+  "_comment": "Starter for projects with magic link or token-based auth. Rules cover the class of bugs that only appear in real browsers and real inboxes — never in unit tests."
+}

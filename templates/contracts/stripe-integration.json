@@ -1,0 +1,18 @@
+{
+  "project": "YOUR_PROJECT_NAME",
+  "pipeline_files": [
+    "webhooks/stripe",
+    "src/lib/stripe",
+    "src/app/api/billing",
+    "src/app/api/domains/register"
+  ],
+  "rules": [
+    "Webhook handler change → test with `stripe trigger` CLI or Stripe test mode; never deploy directly against live keys",
+    "Price ID referenced in code must exist in the Stripe dashboard — verify the product exists before deploy",
+    "New Stripe env var → add to deploy.yml AND GitHub Secrets in the same commit — deploy.yml rewrites .env on every deploy, silently wiping anything not in both places",
+    "Checkout session: verify success_url and cancel_url resolve correctly on the production domain before deploy",
+    "Subscription lifecycle change (create/cancel/upgrade/resume) → trace the full webhook chain: checkout.completed → customer.subscription.updated → invoice.paid → DB state"
+  ],
+  "quality_gate": "6-star",
+  "_comment": "Starter for any project using Stripe. Rules are universal Stripe failure modes. Edit pipeline_files to match your actual paths."
+}

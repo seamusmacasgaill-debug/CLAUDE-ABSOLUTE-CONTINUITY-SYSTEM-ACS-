@@ -1,0 +1,18 @@
+{
+  "project": "YOUR_PROJECT_NAME",
+  "pipeline_files": [
+    "prisma/schema.prisma",
+    "prisma/migrations",
+    "src/lib/db",
+    "src/lib/prisma"
+  ],
+  "rules": [
+    "Never edit a migration file that has already been applied to production — create a new migration instead",
+    "Destructive change (rename column, drop column, change type) → requires a multi-step migration: add new → backfill → drop old. Never do it in one step on a live table",
+    "New NOT NULL column on an existing table requires either a DEFAULT value or a data backfill migration — test on a copy with production row counts before applying",
+    "Generated ORM client (Prisma, Drizzle) must be rebuilt after any schema change — type errors after a migration usually mean the client is stale, not that the code is wrong",
+    "Prisma migrations run via migrate deploy in CI/CD — never exec into the container to run them manually, or CI and production will diverge"
+  ],
+  "quality_gate": "6-star",
+  "_comment": "Starter for any project with a managed database schema. Rules cover the universal failure modes: edited migrations, destructive changes, stale clients."
+}

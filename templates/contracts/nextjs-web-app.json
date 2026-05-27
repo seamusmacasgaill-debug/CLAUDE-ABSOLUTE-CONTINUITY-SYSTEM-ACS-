@@ -1,0 +1,21 @@
+{
+  "project": "YOUR_PROJECT_NAME",
+  "contract_doc": "docs/PIPELINE-CONTRACT.md",
+  "pipeline_files": [
+    "middleware.ts",
+    "src/lib/auth",
+    "src/lib/mailer",
+    "src/app/api/webhooks",
+    "src/app/api/billing",
+    "prisma/schema.prisma"
+  ],
+  "rules": [
+    "Auth middleware change → test full sign-in flow in browser before marking done — auth bugs are invisible until a real session is created",
+    "Email route change → verify delivery in a real inbox (not just a console.log) before marking done",
+    "Billing or webhook route change → test with Stripe test mode first; never test a change against live keys first",
+    "Schema change → run migrate deploy on a staging copy first; never edit a migration file that has already been applied to production",
+    "Any change to session/cookie handling → test with a fresh browser (no existing cookies) — most auth bugs only appear on first login"
+  ],
+  "quality_gate": "6-star",
+  "_comment": "Starter for Next.js web apps. Edit pipeline_files to match your actual paths. Rules are universally valid — add project-specific rules as incidents occur."
+}
