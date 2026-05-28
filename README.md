@@ -1,6 +1,6 @@
 # ACS — Absolute Continuity System
 
-**A session management protocol for multi-session AI-assisted software development.**
+**ACS prevents AI-assisted software projects from drifting away from verified reality.**
 
 ACS solves the most common failure mode in AI-assisted development: documentation that claims work is complete when the codebase tells a different story. It does this by enforcing a simple rule — nothing is recorded as complete without a verified git commit hash.
 
